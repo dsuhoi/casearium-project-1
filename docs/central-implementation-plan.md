@@ -56,8 +56,8 @@
 ```env
 FOUNDATION_MODELS_BASE_URL=https://foundation-models.api.cloud.ru/v1
 FOUNDATION_MODELS_API_KEY=...
-DEFAULT_TEXT_MODEL=zai-org/GLM-4.7
-FAST_TEXT_MODEL=zai-org/GLM-4.7-Flash
+DEFAULT_TEXT_MODEL=Qwen/Qwen3-235B-A22B-Instruct-2507
+FAST_TEXT_MODEL=Qwen/Qwen3-235B-A22B-Instruct-2507
 OCR_MODEL=deepseek-ai/DeepSeek-OCR-2
 ```
 
@@ -68,7 +68,7 @@ import os
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    model=os.getenv("DEFAULT_TEXT_MODEL", "zai-org/GLM-4.7"),
+    model=os.getenv("DEFAULT_TEXT_MODEL", "Qwen/Qwen3-235B-A22B-Instruct-2507"),
     base_url=os.environ["FOUNDATION_MODELS_BASE_URL"],
     api_key=os.environ["FOUNDATION_MODELS_API_KEY"],
     temperature=0.1,
@@ -77,8 +77,9 @@ llm = ChatOpenAI(
 
 ### Правила выбора моделей
 
-- Классификация и быстрый роутинг: `GLM-4.7-Flash`
-- Генерация клиентского ответа и security-проверка: `GLM-4.7`
+- Основная текстовая модель для dev/prototype: `Qwen/Qwen3-235B-A22B-Instruct-2507`
+- Классификация, клиентские ответы и security-проверка: `Qwen/Qwen3-235B-A22B-Instruct-2507`
+- Для строгого JSON обязательно явно перечислять допустимые enum-значения в prompt и валидировать ответ через `pydantic`
 - OCR вложений: `deepseek-ai/DeepSeek-OCR-2`
 - VLM оставляем как запасной маршрут, не как обязательную зависимость первого интеграционного цикла
 
@@ -132,7 +133,7 @@ llm = ChatOpenAI(
   "security_flags": [],
   "errors": [],
   "observability": {
-    "model": "zai-org/GLM-4.7-Flash",
+    "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "latency_ms": 820
   }
 }

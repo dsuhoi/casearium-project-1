@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Casearium Support Orchestrator</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <aside class="sidebar">
+          <div>
+            <p class="eyebrow">Fintech AI Support</p>
+            <h1>Кейсариум</h1>
+          </div>
+          <div class="status">
+            <span id="health-dot" class="dot"></span>
+            <span id="health-text">Проверка сервиса</span>
+          </div>
+          <div class="examples">
+            <button data-example="Какая комиссия за перевод между своими счетами?">B2C консультация</button>
+            <button data-example="Как настроить вебхук для получения уведомлений о платежах?">B2B API</button>
+            <button data-example="Мне пришло смс о списании 50 000 руб, но это не я! Взлом!">Security</button>
+            <button data-example="Уже третий день не могу войти в приложение, никто не отвечает! Верните деньги за подписку!">Жалоба</button>
+          </div>
+        </aside>
+
+        <section class="panel chat-panel">
+          <div class="toolbar">
+            <select id="client-type">
+              <option value="">auto</option>
+              <option value="B2C">B2C</option>
+              <option value="B2B">B2B</option>
+            </select>
+            <button id="send">Запустить</button>
+          </div>
+          <textarea id="message" spellcheck="true">Уже третий день не могу войти в приложение, никто не отвечает! Верните деньги за подписку!</textarea>
+          <div id="answer" class="answer"></div>
+        </section>
+
+        <section class="panel inspector">
+          <h2>Маршрут и контракт</h2>
+          <pre id="json-output">{}</pre>
+        </section>
+
+        <section class="panel rag">
+          <h2>RAG источники</h2>
+          <div id="rag-hits"></div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

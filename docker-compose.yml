@@ -1,0 +1,15 @@
+services:
+  casearium:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      FOUNDATION_MODELS_BASE_URL: ${FOUNDATION_MODELS_BASE_URL:-https://foundation-models.api.cloud.ru/v1}
+      FOUNDATION_MODELS_API_KEY: ${FOUNDATION_MODELS_API_KEY:-}
+      DEFAULT_TEXT_MODEL: ${DEFAULT_TEXT_MODEL:-Qwen/Qwen3-235B-A22B-Instruct-2507}
+      FAST_TEXT_MODEL: ${FAST_TEXT_MODEL:-Qwen/Qwen3-235B-A22B-Instruct-2507}
+      OCR_MODEL: ${OCR_MODEL:-deepseek-ai/DeepSeek-OCR-2}
+      RAG_DOCS_DIR: ${RAG_DOCS_DIR:-docs/Кейсариум}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
